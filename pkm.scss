@@ -1,0 +1,227 @@
+$mainColour: rgb(226, 135, 61); //1варијабле
+
+$margina-neka: (
+    //2map-get,uvek mora ; na kraju
+    "nula":0px,
+    "jedan":1em
+);
+
+//3 #{&} === parent,ako se u children elementu ponavlja parentovo ime
+//4 partials
+//5funkcija 
+@function padding($nesto) {
+    @return ($nesto)
+}
+
+;
+
+//6 mixin
+@mixin visirina {
+    width: 70px;
+    height: 70px;
+}
+
+//7 @extend sluzi da se ne ponavljamo nego samo napisemo extend nekog drugog selektora
+// 8 math ,u css mora calc(48px - 4em) a u Sass moze bez calc 
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: $mainColour;
+
+    .h4 {
+        margin: 0.5em;
+        color: red;
+    }
+
+    .compChoice {
+        margin-top: 0.4em !important;
+    }
+
+    .izbor {
+        margin-bottom: 0 !important;
+
+        button {
+            height: 90px;
+        }
+    }
+
+    .izbor-multi {
+        margin: 0.2em !important;
+
+    }
+
+    .welcome {
+        margin-top: 100px;
+
+        h1 {
+            text-align: center;
+        }
+
+    }
+
+    .choose {
+        text-align: center;
+        margin-top: 200px;
+
+        button {
+            padding: padding(12px);
+            border-radius: 30px;
+            font-size: 20px;
+            margin: map-get($margina-neka, jedan);
+        }
+
+        button:hover {
+            background-color: rgb(247, 197, 140);
+            transition: background-color 1s;
+        }
+    }
+}
+
+.single-player,
+.multi-player {
+    min-width: 350px;
+
+    div {
+
+        .rezultat {
+            top: 0.5em;
+            right: -0.5em;
+            margin: 0;
+            width: 30%;
+
+        }
+
+        .rezultat-multi {
+            font-size: 16px;
+
+        }
+
+        .rezultat-multi {
+            top: 50%;
+            right: 0;
+            margin: 0;
+            transform: translateY(-50%);
+            font-size: 16px;
+        }
+
+        @media only screen and (max-width: 500px) {
+
+            .pocetni .choose button {
+                font-size: 18px;
+                color: red;
+            }
+
+            .rezultat {
+                top: 420px;
+                right: default;
+                left: 50%;
+                transform: translateX(-50%);
+                text-transform: lowercase;
+                min-width: 82px
+            }
+
+            .blue button {
+                width: 40px;
+                height: 40px
+            }
+
+            .red button {
+                width: 40px;
+                height: 40px
+            }
+
+            .blue button img {
+                width: 100%;
+                height: 100%
+            }
+
+            .red button img {
+                width: 100%;
+                height: 100%
+            }
+
+            .rezultat-multi {
+                bottom: -100px;
+                top: auto;
+                right: 50%;
+                transform: translateX(50%);
+                font-size: 10px;
+            }
+        }
+
+        text-align: center;
+        margin: 4em;
+
+
+        img {
+            width: 90px;
+            height: 90px;
+        }
+    }
+
+    .macevi {
+        position: relative;
+
+        .obavestenje {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            text-transform: uppercase;
+        }
+
+
+
+        @media only screen and (max-width: 600px) {
+            .obavestenje {
+                right: default;
+                left: 0%;
+                top: 100%;
+            }
+        }
+    }
+
+    .izbor {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        margin-top: 1em;
+
+        div {
+            margin: 0 1em;
+            @include visirina();
+
+            img {
+                width: 100%;
+                height: 100%;
+            }
+        }
+    }
+
+}
+
+.multi-player div div {
+    margin: 0.4em;
+}
+
+.h4 {
+    margin: 0.5em;
+    color: red;
+}
+
+.multi-player {
+    margin: 0;
+    min-width: 300px
+}
+
+@media only screen and (max-width: 500px) {
+
+    .pocetni .choose button {
+        font-size: 12px;
+    }
+}
